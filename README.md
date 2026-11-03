@@ -38,6 +38,16 @@ The optimized production output will be generated in the `dist/` directory.
 
 - **Framework:** React 19 + Vite 6
 - **Styling:** Tailwind CSS (Custom Warm Ivory `#F5F1E8` Editorial Theme)
+
+- # The Samar Journal
+
+A cinematic, interactive developer portfolio by Samar Sethi.
+
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://samar-portfolio-iota.vercel.app/)
+
+**Live Website:** https://samar-portfolio-iota.vercel.app/
+
+**Deployed on:** Vercel
 - **Typography:** Instrument Serif, Newsreader, Inter, JetBrains Mono
 - **Animations:** GSAP 3 + ScrollTrigger, Framer Motion
 - **Smooth Scroll:** Lenis
