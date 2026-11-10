@@ -38,15 +38,40 @@ const channels = [
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="py-24 px-6 sm:px-10 max-w-7xl mx-auto border-t border-[#242420]/15 relative">
-      {/* Section Header */}
-      <div className="flex flex-wrap items-center justify-between font-mono text-xs uppercase tracking-widest text-[#74786A] mb-14">
-        <span className="text-[#B85C42] font-semibold">05 &bull; Inquiries &amp; Correspondence</span>
-        <span>The Telegram Desk</span>
+    <section id="contact" className="py-24 px-6 sm:px-10 max-w-7xl mx-auto relative select-none">
+      {/* ─── EDITORIAL SECTION MASTHEAD ─── */}
+      <div className="border-b-2 border-[#242420] pb-6 mb-14">
+        <div className="flex flex-wrap items-center justify-between font-mono text-xs uppercase tracking-widest text-[#74786A] mb-4">
+          <div className="flex items-center gap-3">
+            <span className="text-[#B85C42] font-semibold">04 &bull; Inquiries &amp; Correspondence</span>
+            <span>&mdash;</span>
+            <span>The Telegram Desk</span>
+          </div>
+          <span>Direct Transmission Lines</span>
+        </div>
+
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <div className="overflow-hidden py-1">
+              <motion.h2
+                initial={{ y: '110%', opacity: 0 }}
+                whileInView={{ y: '0%', opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal text-[#1A1A16] tracking-tight uppercase leading-none"
+              >
+                Telegram Desk.
+              </motion.h2>
+            </div>
+            <p className="font-serif italic text-base sm:text-lg text-[#74786A] mt-2">
+              Transmissions answered promptly regarding low-latency systems, research &amp; collaborative builds.
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        {/* Left Column (Statement & Coordinates) */}
+        {/* Left Column: Statement & Coordinates */}
         <div className="lg:col-span-6 space-y-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -54,9 +79,9 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-[#1A1A16] leading-[1.05]">
+            <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-[#1A1A16] leading-[1.08]">
               Open for ambitious ventures, collaborative research &amp; engineering dispatches.
-            </h2>
+            </h3>
           </motion.div>
 
           <motion.p
@@ -92,7 +117,7 @@ export default function ContactSection() {
           </motion.div>
         </div>
 
-        {/* Right Column (4 Direct Channels: LinkedIn, GitHub, Instagram, Gmail) */}
+        {/* Right Column: 4 Direct Channels (LinkedIn, GitHub, Instagram, Gmail) */}
         <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {channels.map((channel, idx) => {
             const Icon = channel.icon
@@ -119,12 +144,11 @@ export default function ContactSection() {
                   <p className="font-mono text-[10px] uppercase tracking-wider text-[#74786A]">
                     {channel.category}
                   </p>
-                  
-                  {/* Title with animated underline effect */}
-                  <h3 className="font-serif text-2xl text-[#1A1A16] group-hover:text-[#B85C42] transition-colors relative inline-block my-1">
+
+                  <h4 className="font-serif text-2xl text-[#1A1A16] group-hover:text-[#B85C42] transition-colors relative inline-block my-1">
                     {channel.name}
                     <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#B85C42] group-hover:w-full transition-all duration-300" />
-                  </h3>
+                  </h4>
 
                   <p className="font-mono text-xs text-[#B85C42] mb-2 font-medium">
                     {channel.handle}
@@ -136,7 +160,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="mt-5 pt-3 border-t border-[#242420]/10 flex items-center justify-between font-mono text-[11px] text-[#242420] group-hover:text-[#B85C42] transition-colors">
-                  <span>Open Dispatch</span>
+                  <span>Open Transmission</span>
                   <span>&rarr;</span>
                 </div>
               </motion.a>

@@ -5,14 +5,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import Navbar from './components/Navbar'
 import NewspaperIntro from './components/NewspaperIntro'
-import Introduction from './components/Introduction'
 import AboutSection from './components/AboutSection'
-import SelectedWork from './components/SelectedWork'
 import TechnicalExpertise from './components/TechnicalExpertise'
+import SelectedWork from './components/SelectedWork'
 import ContactSection from './components/ContactSection'
 import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
 import ScrollProgressBar from './components/ScrollProgressBar'
+import { PageTurnCurl, SpreadLiftTransition, FoldAwayTransition } from './components/PageTransitions'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -23,7 +23,7 @@ function App() {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) return
 
-    // Initialize Lenis with refined inertia
+    // Initialize Lenis with smooth inertia
     const lenis = new Lenis({
       duration: 1.25,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -31,6 +31,7 @@ function App() {
       touchMultiplier: 1.2,
     })
     lenisRef.current = lenis
+    window.__lenis = lenis
 
     lenis.on('scroll', ScrollTrigger.update)
 
@@ -66,11 +67,11 @@ function App() {
   }, [])
 
   const handleSkipIntro = () => {
-    const introEl = document.getElementById('intro')
-    if (introEl && lenisRef.current) {
-      lenisRef.current.scrollTo(introEl, { offset: 0, duration: 1.2 })
-    } else if (introEl) {
-      introEl.scrollIntoView({ behavior: 'smooth' })
+    const aboutEl = document.getElementById('about')
+    if (aboutEl && lenisRef.current) {
+      lenisRef.current.scrollTo(aboutEl, { offset: -40, duration: 1.2 })
+    } else if (aboutEl) {
+      aboutEl.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
@@ -84,16 +85,16 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#F5F1E8] text-[#242420] overflow-x-hidden selection:bg-[#B85C42]/20 selection:text-[#242420] relative font-sans">
-      {/* Extremely subtle editorial paper grain overlay across the entire page */}
+      {/* Subtle authentic paper grain texture overlay across viewport */}
       <div 
-        className="fixed inset-0 pointer-events-none opacity-[0.035] z-[5] mix-blend-multiply"
+        className="fixed inset-0 pointer-events-none opacity-[0.025] z-[5] mix-blend-multiply"
         style={{
-          backgroundImage: `radial-gradient(#242420 1px, transparent 1px)`,
-          backgroundSize: '20px 20px',
+          backgroundImage: `radial-gradient(#242420 0.7px, transparent 0.7px)`,
+          backgroundSize: '14px 14px',
         }}
       />
 
-      {/* Very subtle editorial hairline guides */}
+      {/* Editorial hairline vertical boundary guides */}
       <div className="fixed inset-0 pointer-events-none z-[4] max-w-7xl mx-auto px-6 sm:px-10 flex justify-between opacity-15">
         <div className="w-[1px] h-full bg-[#242420]" />
         <div className="w-[1px] h-full bg-[#242420]" />
@@ -105,27 +106,37 @@ function App() {
       {/* Refined editorial custom cursor */}
       <CustomCursor />
 
-      {/* Global Navbar */}
+      {/* Global Navbar with correct 4-section links: 01 About, 02 Expertise, 03 Work, 04 Contact */}
       <Navbar />
 
       {/* ─── SCENE 1: THE UNFOLDING — Realistic Interactive Newspaper Tearing Sequence ─── */}
+      {/* 
+        The Newspaper intro is pinned. As the visitor scrolls, the newspaper cover tears apart,
+        and SECTION 01 (ABOUT ME) is already positioned underneath it, directly visible through the gap!
+      */}
       <NewspaperIntro onSkip={handleSkipIntro} />
 
-      {/* ─── SCENE 2: EDITORIAL PORTFOLIO (Revealed underneath) ─── */}
+      {/* ─── SCENE 2: PHYSICAL NEWSPAPER EDITORIAL PAGES & CONTINUOUS FLOW ─── */}
       <main className="relative z-10 bg-[#F5F1E8]">
-        {/* 01 — Introduction */}
-        <Introduction />
-
-        {/* 02 — About */}
+        {/* 01 — ABOUT ME: THE PERSON BEHIND THE CODE (PORTRAIT + MARQUEES + ASTRONAUT HOVER) */}
         <AboutSection />
 
-        {/* 03 — Selected Work */}
-        <SelectedWork />
+        {/* ── Page Turn Curl: Section 01 → Section 02 ── */}
+        <PageTurnCurl />
 
-        {/* 04 — Technical Expertise */}
+        {/* 02 — TECHNICAL EXPERTISE: ILLUSTRATED TECHNICAL SUPPLEMENT */}
         <TechnicalExpertise />
 
-        {/* 05 — Contact */}
+        {/* ── Spread Lift: Section 02 → Section 03 ── */}
+        <SpreadLiftTransition />
+
+        {/* 03 — SELECTED WORK: FULL-WIDTH EDITORIAL SPREADS & LIVE SIMULATIONS */}
+        <SelectedWork />
+
+        {/* ── Fold Away: Section 03 → Section 04 ── */}
+        <FoldAwayTransition />
+
+        {/* 04 — CONTACT: THE TELEGRAM DESK */}
         <ContactSection />
       </main>
 

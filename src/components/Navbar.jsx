@@ -3,24 +3,23 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 
 const navLinks = [
-  { label: '01 Intro', href: '#intro', id: 'intro' },
-  { label: '02 About', href: '#about', id: 'about' },
+  { label: '01 About', href: '#about', id: 'about' },
+  { label: '02 Expertise', href: '#expertise', id: 'expertise' },
   { label: '03 Work', href: '#work', id: 'work' },
-  { label: '04 Expertise', href: '#expertise', id: 'expertise' },
-  { label: '05 Contact', href: '#contact', id: 'contact' },
+  { label: '04 Contact', href: '#contact', id: 'contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('')
+  const [activeSection, setActiveSection] = useState('about')
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 80)
 
-      const sections = ['intro', 'about', 'work', 'expertise', 'contact']
-      const scrollPos = window.scrollY + 160
+      const sections = ['about', 'expertise', 'work', 'contact']
+      const scrollPos = window.scrollY + 200
 
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId)
@@ -50,7 +49,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 sm:px-10">
         <div className="flex items-center justify-between h-20">
           {/* Masthead monogram */}
-          <a href="#intro" className="group flex items-center gap-3">
+          <a href="#about" className="group flex items-center gap-3">
             <span className="font-serif text-2xl font-normal tracking-tight text-[#242420] group-hover:text-[#B85C42] transition-colors">
               The Samar Journal
             </span>
