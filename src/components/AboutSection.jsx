@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowDownRight, Github, Linkedin, GraduationCap, MapPin, Code, Award } from 'lucide-react'
-import AstronautPortrait from './AstronautPortrait'
+import IronManTransformation from './IronManTransformation'
 import DualMarquee from './DualMarquee'
 
 export default function AboutSection() {
@@ -42,11 +42,11 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Centered Interactive Portrait with Astronaut Hover Transformation */}
+        {/* Centered Interactive Portrait with Scribble-to-Iron Man Transformation */}
         <div className="relative z-20 flex justify-center -mt-6 sm:-mt-10">
-          <AstronautPortrait
+          <IronManTransformation
             portraitSrc="/samar_cutout.png"
-            astronautSrc="/samar_astronaut.png"
+            ironManSrc="/ironman_armor.png"
           />
         </div>
 
